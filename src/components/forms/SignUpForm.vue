@@ -51,7 +51,12 @@ function validateSignUp(e) {
 
 <template>
   <AuthCard>
-    <h1 class="sign-up-heading">Sign Up</h1>
+    <div class="form-header">
+      <RouterLink to="/" class="back-button">
+        <span class="back-arrow">←</span> Back to Home
+      </RouterLink>
+      <h1 class="sign-up-heading">Sign Up</h1>
+    </div>
     <form class="sign-up-form" @submit="validateSignUp">
       <label for="username" class="sign-up-form__label">Username</label>
       <input
@@ -108,4 +113,39 @@ function validateSignUp(e) {
 
 <style lang="scss" scoped>
 @use '@/sass/components/forms/sign-up-form';
+
+.form-header {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #666;
+  text-decoration: none;
+  font-size: 0.95rem;
+  padding: 0.5rem 0;
+  transition: all 0.3s;
+  margin-bottom: 1rem;
+}
+
+.back-button:hover {
+  color: #333;
+  transform: translateX(-4px);
+}
+
+.back-arrow {
+  font-size: 1.2rem;
+  transition: transform 0.3s;
+}
+
+.back-button:hover .back-arrow {
+  transform: translateX(-4px);
+}
+
+.sign-up-heading {
+  margin-top: 0.5rem;
+}
 </style>

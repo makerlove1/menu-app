@@ -43,19 +43,24 @@ export function useFirebaseAuth(formState) {
 
     signInWithEmailAndPassword(auth, formState.email, formState.password)
       .then(() => {
-        signInError.value = 'Signin in...';
+        signInError.value = 'Signing in...';
 
         setTimeout(() => {
-          router.push({ name: 'Admin' });
-        }, 2000);
+          // Check if admin or regular user
+          if (formState.email === 'admin@test.com') {
+            router.push({ name: 'AdminDashboard' });
+          } else {
+            router.push({ name: 'UserDashboard' });
+          }
+        }, 1000);
       })
       .catch((error) => {
         if (error.code === 'auth/user-not-found') {
-          signInError.value = 'The entered Email adress is not found';
+          signInError.value = 'The entered Email address is not found';
         } else if (error.code === 'auth/wrong-password') {
           signInError.value = 'Wrong password';
         } else {
-          signInError.value = ' Something went wrong, please try again.';
+          signInError.value = 'Something went wrong, please try again.';
         }
       });
   }

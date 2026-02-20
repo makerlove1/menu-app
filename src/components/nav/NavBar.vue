@@ -129,11 +129,6 @@ onUnmounted(() => {
           </div>
           <p @click="toggleSearch">Search</p>
         </li>
-        <RouterLink to="/admin">
-          <li class="nav-links__item">
-            <font-awesome-icon icon="fa-regular fa-heart" v-if="!isMobileView" />Favorites
-          </li>
-        </RouterLink>
         <RouterLink to="/signin">
           <li
             class="nav-links__item nav-links__item--btn-transparent"

@@ -23,11 +23,6 @@
           class="social-media__icon social-media__icon--youtube"
         />
       </div>
-      <img
-        src="@/assets/Edamam_Badge_Transparent.svg"
-        alt="edamam logo"
-        class="edamam-logo"
-      />
     </div>
   </footer>
 </template>

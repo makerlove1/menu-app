@@ -21,6 +21,15 @@ const routes = [
   },
 
   {
+    path: '/user-dashboard',
+    name: 'UserDashboard',
+    component: () => import('@/views/UserDashboard.vue'),
+    meta: {
+      requiresAuth: true,
+    },
+  },
+
+  {
     path: '/admin',
     name: 'Admin',
     component: () => import('@/views/Admin.vue'),
@@ -30,10 +39,26 @@ const routes = [
   },
 
   {
+    path: '/admin-dashboard',
+    name: 'AdminDashboard',
+    component: () => import('@/views/AdminDashboard.vue'),
+    meta: {
+      requiresAuth: true,
+      requiresAdmin: true,
+    },
+  },
+
+  {
     path: '/meal-details/:id',
     name: 'MealDetails',
     component: () => import('@/views/MealDetails.vue'),
     props: true,
+  },
+
+  {
+    path: '/menu-order',
+    name: 'MenuOrder',
+    component: () => import('@/views/MenuOrder.vue'),
   },
 ];
 
@@ -48,6 +73,7 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   const requiresAuth = to.matched.some((record) => record.meta.requiresAuth);
   const isAuthenticated = getAuth().currentUser;
+  
   if (requiresAuth && !isAuthenticated) {
     next('/signin');
   } else {
