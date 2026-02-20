@@ -97,26 +97,10 @@ onUpdated(() => {
       :src="meal.recipe.image"
       alt="meal"
       class="meal-card__img"
-      v-if="props.meal.recipe.image"
     />
-    <img
-      src="@/assets/Edamam_Badge_Transparent.svg"
-      alt="meal"
-      class="meal-card__edamam-logo"
-      v-else
-    />
-    <h3
-      :class="
-        props.meal.recipe.image
-          ? 'meal-card__heading'
-          : 'meal-card__heading-edamam-logo'
-      "
-    >
+    <h3 class="meal-card__heading">
       {{ meal.recipe.label }}
     </h3>
-    <h4 class="meal-card__dish-type" v-if="!props.meal.recipe.image">
-      {{ capitalizeFirstLetter(props.meal.recipe.dishType[0]) }}
-    </h4>
     <div class="meal-card-cta">
       <font-awesome-icon
         icon="fa-regular fa-heart"
